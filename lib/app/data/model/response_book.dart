@@ -2,25 +2,25 @@
 /// message : "success"
 /// data : [{"id":1,"kategori_id":1,"judul":"Belajar mengenal angka","penulis":"kusnaidi","penerbit":"PT alangka","tahun_terbit":2024,"created_at":"2024-01-09T05:43:09.000000Z","updated_at":"2024-01-09T05:43:09.000000Z","kategori":{"id":1,"nama":"umum"}}]
 
-class ResponseUserBook {
-  ResponseUserBook({
+class ResponseBook {
+  ResponseBook({
       this.status, 
       this.message, 
       this.data,});
 
-  ResponseUserBook.fromJson(dynamic json) {
+  ResponseBook.fromJson(dynamic json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data?.add(Data.fromJson(v));
+        data?.add(DataBook.fromJson(v));
       });
     }
   }
   int? status;
   String? message;
-  List<Data>? data;
+  List<DataBook>? data;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -44,8 +44,8 @@ class ResponseUserBook {
 /// updated_at : "2024-01-09T05:43:09.000000Z"
 /// kategori : {"id":1,"nama":"umum"}
 
-class Data {
-  Data({
+class DataBook {
+  DataBook({
       this.id, 
       this.kategoriId, 
       this.judul, 
@@ -56,7 +56,7 @@ class Data {
       this.updatedAt, 
       this.kategori,});
 
-  Data.fromJson(dynamic json) {
+  DataBook.fromJson(dynamic json) {
     id = json['id'];
     kategoriId = json['kategori_id'];
     judul = json['judul'];

@@ -14,11 +14,13 @@ class LoginView extends GetView<LoginController> {
         title: const Text('LoginView'),
         centerTitle: true,
       ),
+
       body:  Center(
           child: Form(
             key: controller.formKey,
             child: Column(
               children: [
+
                 TextFormField(
                     controller: controller.usernameController,
                     decoration: InputDecoration(hintText: "Masukkan Username"),
@@ -40,6 +42,7 @@ class LoginView extends GetView<LoginController> {
                       return null;
                     }
                 ),
+
                 Obx(() => controller.loading.value?
                 CircularProgressIndicator():
                 ElevatedButton(onPressed: (){

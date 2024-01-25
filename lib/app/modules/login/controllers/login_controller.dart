@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:dio/dio.dart' as dio;
+import 'package:tugas2/app/data/model/response_login.dart';
 import '../../../data/constant/endpoint.dart';
 import '../../../data/provider/api_provider.dart';
 import '../../../data/provider/storage_provider.dart';
@@ -55,6 +56,8 @@ class LoginController extends GetxController {
             )
         );
         if (response.statusCode == 200) {
+          ResponseLogin responseLogin=ResponseLogin.fromJson(response.data);
+          await StorageProvider.write(StorageKey.iduser, responseLogin.data!.id!.toString());
           await StorageProvider.write(StorageKey.status, "logged");
           Get.offAllNamed(Routes.HOME);
         }
